@@ -7,13 +7,15 @@ import { PrimengModule } from './primeng.module.ts.module';
 import { AlertComponent } from './alert/alert.component';
 import { MenuComponent } from './menu/menu.component';
 import { FooterComponent } from './footer/footer.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AlertComponent,
     MenuComponent,
-    FooterComponent
+    FooterComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
