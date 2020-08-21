@@ -4,19 +4,21 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PrimengModule } from './primeng.module.ts.module';
-import { AlertModule } from './alert/alert.module';
 import { AlertComponent } from './alert/alert.component';
+import { MenuComponent } from './menu/menu.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AlertComponent
+    AlertComponent,
+    MenuComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     PrimengModule,
-    AlertModule
   ],
   providers: [],
   bootstrap: [AppComponent]
