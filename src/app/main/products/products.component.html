@@ -1,15 +1,5 @@
 <h1>Products</h1>
 
-<!-- <div *ngIf="(products$ | async)?.length>0; else noproduct">
-  <ul>
-    <li *ngFor="let p of (products$ | async)">{{p.name}} - {{p.department}} - {{p.price}}</li>
-  </ul>
-</div>
-
-<ng-template #noproduct>
-  <p>No product found!</p>
-</ng-template> -->
-
 <div *ngIf="(products$ | async)?.length>0; else noproduct">
   <ul>
     <li *ngFor="let p of (products$ | async)">{{p.id}} - {{p.apresentacao}} - {{p.codigoBarrasPrincipal}}</li>
@@ -19,3 +9,16 @@
 <ng-template #noproduct>
   <p>No product found!</p>
 </ng-template>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>APRESENTAÇÂO</th>
+    <th>CÓD. BARRAS</th>
+  </tr>
+  <tr *ngFor="let p of (products$ | async)">
+    <td>{{p.id}}</td>
+    <td>{{p.apresentacao}}</td>
+    <td>{{p.codigoBarrasPrincipal}}</td>
+  </tr>
+</table>
