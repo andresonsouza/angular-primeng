@@ -5,7 +5,6 @@ const authModule = () => import('./auth/auth.module').then(m => m.AuthModule);
 const mainModule = () => import('./main/main.module').then(m => m.MainModule);
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: '/main/people'},
   { path: 'main', loadChildren: mainModule },
   { path: 'auth', loadChildren: authModule }
 ];
