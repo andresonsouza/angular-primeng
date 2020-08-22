@@ -1,4 +1,9 @@
-<p-menubar [model]="items"></p-menubar>
+<p-toolbar styleClass="toolbar">
+  <div class="p-toolbar-group-left">
+    <button pButton label="users" routerLink="people"></button>
+    <button pButton label="Produtcs" routerLink="products"></button>
+  </div>
+</p-toolbar>
 
 <div>
   <router-outlet></router-outlet>

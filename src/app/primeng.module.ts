@@ -21,6 +21,7 @@ import { ContextMenuModule } from 'primeng/contextmenu';
 import { DialogModule } from 'primeng/dialog';
 import { DropdownModule } from 'primeng/dropdown';
 import { MenubarModule } from 'primeng/menubar';
+import { SplitButtonModule } from 'primeng/splitbutton';
 
 @NgModule({
   declarations: [],
@@ -46,6 +47,7 @@ import { MenubarModule } from 'primeng/menubar';
     PasswordModule,
     ToolbarModule,
     MenubarModule,
+    SplitButtonModule
   ]
 })
 export class PrimengModule { }

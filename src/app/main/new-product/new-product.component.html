@@ -1,1 +1,40 @@
-<h1>New Product</h1>
+<h1>Cadastro de Produtos</h1>
+
+<form [formGroup]="formProduct" (ngSubmit)="saveProduct()" class="p-fluid p-formgrid p-grid">
+  <div class="p-field p-col-12 p-md-3">
+    <label for="id">ID</label>
+    <input id="id" formControlName="id" type="number" pInputText>
+  </div>
+
+  <div class="p-field p-col-12 p-md-3">
+    <label for="codigoErp">Código Erp</label>
+    <input id="codigoErp" formControlName="codigoErp" type="text" pInputText>
+  </div>
+
+  <div class="p-field p-col-12 p-md-6">
+    <label for="apresentacao">Apresentação</label>
+    <input id="apresentacao" formControlName="apresentacao" type="text" pInputText>
+  </div>
+
+  <div class="p-field p-col-12 p-md-6">
+    <label for="nomeComercial">Nome Comercial</label>
+    <input id="nomeComercial" formControlName="nomeComercial" type="text" pInputText>
+  </div>
+
+  <div class="p-field p-col-12 p-md-6">
+    <label for="nomeComercialComApresentacao">Nome Comercial Com Apresentação</label>
+    <input id="nomeComercialComApresentacao" formControlName="nomeComercialComApresentacao" type="text" pInputText>
+  </div>
+
+  <div class="p-field p-col-12 p-md-6">
+    <label for="unidadeMedidaAnvisa">Unidade Medida Anvisa</label>
+    <input id="unidadeMedidaAnvisa" formControlName="unidadeMedidaAnvisa" type="text" pInputText>
+  </div>
+
+  <div class="p-field p-col-12 p-md-6">
+    <label for="codigoBarrasPrincipal">Código Barras Principal</label>
+    <input id="codigoBarrasPrincipal" formControlName="codigoBarrasPrincipal" type="text" pInputText>
+  </div>
+
+  <p-button label="Submit" type="submit"></p-button>
+</form>

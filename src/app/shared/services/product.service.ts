@@ -24,4 +24,8 @@ export class ProductService {
     );
   }
 
+  registerProduct(product: Product): Observable<Product>{
+    return this.http.post<Product>(`${this.urlApi}/products`, product);
+  }
+
 }
