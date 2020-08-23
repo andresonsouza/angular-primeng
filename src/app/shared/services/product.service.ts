@@ -9,23 +9,17 @@ import { Observable, throwError } from 'rxjs';
 })
 export class ProductService {
 
-  readonly urlApi = 'http://localhost:3000';
+  readonly url = 'http://localhost:3000';
 
   constructor(private http: HttpClient) { }
 
-  getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(`${this.urlApi}/products`)
-    .pipe(
-      tap(res => console.log(res)),
-      catchError((err) => {
-        console.log(err);
-        return throwError(err);
-      })
-    );
+  getProducts(): any {
+    return this.http.get<any>(`${this.url}/products`);
   }
 
+
   registerProduct(product: Product): Observable<Product>{
-    return this.http.post<Product>(`${this.urlApi}/products`, product);
+    return this.http.post<Product>(`${this.url}/products`, product);
   }
 
 }

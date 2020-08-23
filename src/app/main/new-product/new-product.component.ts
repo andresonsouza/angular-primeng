@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { ProductService } from '../../shared/services/product.service';
+import { Product } from 'src/app/shared/models/product';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-new-product',
@@ -18,14 +21,28 @@ export class NewProductComponent implements OnInit {
     codigoBarrasPrincipal: ['', [Validators.required]],
   });
 
-  constructor(private fb: FormBuilder) { }
+  constructor(
+    private fb: FormBuilder,
+    private productService: ProductService,
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  saveProduct(): any {
+  onSubmit() {
     console.log(this.formProduct.value);
-    alert('Salvo com sucesso!');
+    let p: Product = {
+      ...this.formProduct.value
+    };
+    this.productService.registerProduct(p)
+      .subscribe(
+        (p) => {
+          this.router.navigate(['../products'], { relativeTo: this.route });
+        },
+        error => {
+          console.error(error);
+        });
   }
-
 }
+

@@ -1,6 +1,6 @@
 <h1>Cadastro de Produtos</h1>
 
-<form [formGroup]="formProduct" (ngSubmit)="saveProduct()" class="p-fluid p-formgrid p-grid">
+<form [formGroup]="formProduct" (ngSubmit)="onSubmit()" class="p-fluid p-formgrid p-grid">
   <div class="p-field p-col-12 p-md-3">
     <label for="id">ID</label>
     <input id="id" formControlName="id" type="number" pInputText>

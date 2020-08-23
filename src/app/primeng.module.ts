@@ -22,6 +22,11 @@ import { DialogModule } from 'primeng/dialog';
 import { DropdownModule } from 'primeng/dropdown';
 import { MenubarModule } from 'primeng/menubar';
 import { SplitButtonModule } from 'primeng/splitbutton';
+import { FileUploadModule } from 'primeng/fileupload';
+import { RatingModule } from 'primeng/rating';
+import { RadioButtonModule } from 'primeng/radiobutton';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 @NgModule({
   declarations: [],
@@ -47,7 +52,12 @@ import { SplitButtonModule } from 'primeng/splitbutton';
     PasswordModule,
     ToolbarModule,
     MenubarModule,
-    SplitButtonModule
+    SplitButtonModule,
+    FileUploadModule,
+    RatingModule,
+    RadioButtonModule,
+    InputNumberModule,
+    ConfirmDialogModule
   ]
 })
 export class PrimengModule { }

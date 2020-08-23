@@ -1,22 +1,34 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Product } from '../../shared/models/product';
 import { ProductService } from '../../shared/services/product.service';
+
+import { ConfirmationService } from 'primeng/api';
+import { MessageService } from 'primeng/api';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss']
+  styleUrls: ['./products.component.scss'],
+  providers: [MessageService, ConfirmationService]
 })
 export class ProductsComponent implements OnInit {
 
   products$: Observable<Product[]>;
 
-  constructor(private productService: ProductService) { }
+
+
+  constructor(
+    private productService: ProductService,
+    private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.products$ = this.productService.getProducts();
+    this.listProducts();
+  }
 
+  listProducts(): void {
+    this.products$ = this.productService.getProducts();
   }
 
 }

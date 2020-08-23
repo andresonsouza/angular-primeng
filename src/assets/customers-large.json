@@ -1,5 +1,5 @@
 {
-  "products": [
+  "data": [
     {
       "id": 19,
       "codigoErp": "190",
@@ -179,15 +179,6 @@
       "nomeComercialComApresentacao": "SOMALIUM GTS 20ML",
       "unidadeMedidaAnvisa": "FRASCOS",
       "codigoBarrasPrincipal": "7896658004841"
-    },
-    {
-      "id": 45,
-      "codigoErp": "289",
-      "apresentacao": "G&G 24UG",
-      "nomeComercial": "MASCARA CONTRA CORONA",
-      "nomeComercialComApresentacao": "MASCARA CONTRA CORONA G&G 24UG",
-      "unidadeMedidaAnvisa": "MASCARA",
-      "codigoBarrasPrincipal": "7894568895136"
     }
   ]
 }
