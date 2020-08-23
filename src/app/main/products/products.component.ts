@@ -26,6 +26,9 @@ export class ProductsComponent implements OnInit {
     .subscribe(
       response => {
         this.products = response;
+      },
+      error => {
+        alert('Erro ao carregar a lista de produtos!');
       }
     );
   }
