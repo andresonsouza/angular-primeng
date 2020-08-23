@@ -15,20 +15,19 @@ import { Observable } from 'rxjs';
 })
 export class ProductsComponent implements OnInit {
 
-  products$: Observable<Product[]>;
-
-
+  products: Product[];
 
   constructor(
     private productService: ProductService,
     private http: HttpClient) { }
 
-  ngOnInit(): void {
-    this.listProducts();
-  }
-
-  listProducts(): void {
-    this.products$ = this.productService.getProducts();
+  ngOnInit() {
+    this.productService.getProducts()
+    .subscribe(
+      response => {
+        this.products = response;
+      }
+    );
   }
 
 }

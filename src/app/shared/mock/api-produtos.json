@@ -188,6 +188,24 @@
       "nomeComercialComApresentacao": "MASCARA CONTRA CORONA G&G 24UG",
       "unidadeMedidaAnvisa": "MASCARA",
       "codigoBarrasPrincipal": "7894568895136"
+    },
+    {
+      "id": 67,
+      "codigoErp": "42190",
+      "apresentacao": "GTS 20ML",
+      "nomeComercial": "SOMALIUM",
+      "nomeComercialComApresentacao": "SOMALIUM GTS 20ML",
+      "unidadeMedidaAnvisa": "FRASCOS",
+      "codigoBarrasPrincipal": "7896658004841"
+    },
+    {
+      "id": 5000,
+      "codigoErp": "41970",
+      "apresentacao": "3MG 20COMP",
+      "nomeComercial": "SOMALIUM",
+      "nomeComercialComApresentacao": "SOMALIUM 3MG 20COMP",
+      "unidadeMedidaAnvisa": "CAIXAS",
+      "codigoBarrasPrincipal": "7896658000607"
     }
   ]
 }
