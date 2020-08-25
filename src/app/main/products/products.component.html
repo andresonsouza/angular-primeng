@@ -1,29 +1,38 @@
+<p-table [value]="products">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>ID</th>
+      <th>Código ERP</th>
+      <th>Apresentação</th>
+      <th>Nome Comercial</th>
+      <th>Nome Comercial com Apresentação</th>
+      <th>Unidade Medida Anvisa</th>
+      <th>Código Barras Principal</th>
+      <th>Ações</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-product>
+    <tr>
+      <td>{{product.id}}</td>
+      <td>{{product.codigoErp}}</td>
+      <td>{{product.apresentacao}}</td>
+      <td>{{product.nomeComercial}}</td>
+      <td>{{product.nomeComercialComApresentacao}}</td>
+      <td>{{product.unidadeMedidaAnvisa}}</td>
+      <td>{{product.codigoBarrasPrincipal}}</td>
+      <td>
+        <button pButton pRipple type="button" label="Delete" class="p-button-danger"
+          (click)="deleteProduct(product.id)"></button>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
 
+<p-button label="Adicionar" routerLink="../add"></p-button>
 
-    <p-table [value]="products">
-      <ng-template pTemplate="header">
-        <tr>
-          <th>ID</th>
-          <th>Código ERP</th>
-          <th>Apresentação</th>
-          <th>Nome Comercial</th>
-          <th>Nome Comercial com Apresentação</th>
-          <th>Unidade Medida Anvisa</th>
-          <th>Código Barras Principal</th>
-        </tr>
-      </ng-template>
-      <ng-template pTemplate="body" let-product>
-        <tr>
-          <td>{{product.id}}</td>
-          <td>{{product.codigoErp}}</td>
-          <td>{{product.apresentacao}}</td>
-          <td>{{product.nomeComercial}}</td>
-          <td>{{product.nomeComercialComApresentacao}}</td>
-          <td>{{product.unidadeMedidaAnvisa}}</td>
-          <td>{{product.codigoBarrasPrincipal}}</td>
-        </tr>
-      </ng-template>
-    </p-table>
-
-    <p-button label="Novo Produto" routerLink="../add"></p-button>
-
+<p-confirmDialog #cd header="Confirmation" icon="pi pi-exclamation-triangle">
+  <p-footer>
+    <button type="button" pButton icon="pi pi-times" label="Não" (click)="cd.reject()"></button>
+    <button type="button" pButton icon="pi pi-check" label="Sim" (click)="cd.accept()"></button>
+  </p-footer>
+</p-confirmDialog>

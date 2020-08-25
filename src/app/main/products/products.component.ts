@@ -5,7 +5,6 @@ import { ProductService } from '../../shared/services/product.service';
 import { ConfirmationService } from 'primeng/api';
 import { MessageService } from 'primeng/api';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-products',
@@ -19,18 +18,39 @@ export class ProductsComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    private http: HttpClient) { }
+    private http: HttpClient,
+    private confirmationService: ConfirmationService) { }
 
-  ngOnInit() {
-    this.productService.getProducts()
-    .subscribe(
-      response => {
-        this.products = response;
-      },
-      error => {
-        alert('Erro ao carregar a lista de produtos!');
-      }
-    );
+  ngOnInit(): void {
+    this.listProducts();
   }
 
+  listProducts(): void {
+    this.productService.getProducts()
+      .subscribe(
+        response => {
+          this.products = response;
+        },
+        error => {
+          alert('Erro ao carregar a lista de produtos!');
+        }
+      );
+  }
+
+  deleteProduct(id: string): void {
+    this.confirmationService.confirm({
+      message: 'Tem certeza de que deseja executar esta ação?',
+      accept: () => {
+        this.productService.deleteProduct(id)
+          .subscribe(
+            res => {
+              this.listProducts();
+            },
+            error => {
+              alert('Erro ao deletar o produto!');
+            }
+          );
+      }
+    });
+  }
 }

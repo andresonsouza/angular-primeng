@@ -21,4 +21,12 @@ export class ProductService {
     return this.http.post<Product>(`${this.url}/products`, product);
   }
 
+  // deleteProduct(id: string): Observable<any> {
+  //   return this.http.delete(this.url + '/products/' + id);
+  // }
+
+  deleteProduct(id: string): Observable<any> {
+    return this.http.delete(`${this.url}/products/` + id);
+  }
+
 }
