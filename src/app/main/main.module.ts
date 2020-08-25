@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { PrimengModule } from '../primeng.module';
 import { NewProductComponent } from './new-product/new-product.component';
 import { MenuComponent } from './menu/menu.component';
+import { EditProductComponent } from './edit-product/edit-product.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { MenuComponent } from './menu/menu.component';
     PeopleComponent,
     HomeComponent,
     NewProductComponent,
-    MenuComponent],
+    MenuComponent,
+    EditProductComponent],
   imports: [
     CommonModule,
     MainRoutingModule,

@@ -1,4 +1,7 @@
-<p-table [value]="products">
+<!-- <p-table [value]="products">
+  <ng-template pTemplate="caption">
+    Lista de Produtos
+</ng-template>
   <ng-template pTemplate="header">
     <tr>
       <th>ID</th>
@@ -21,14 +24,73 @@
       <td>{{product.unidadeMedidaAnvisa}}</td>
       <td>{{product.codigoBarrasPrincipal}}</td>
       <td>
-        <button pButton pRipple type="button" label="Delete" class="p-button-danger"
-          (click)="deleteProduct(product.id)"></button>
+        <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="deleteProduct(product.id)"></button>
+        <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteProduct(product.id)"></button>
       </td>
     </tr>
   </ng-template>
 </p-table>
 
 <p-button label="Adicionar" routerLink="../add"></p-button>
+
+<p-confirmDialog #cd header="Confirmation" icon="pi pi-exclamation-triangle">
+  <p-footer>
+    <button type="button" pButton icon="pi pi-times" label="Não" (click)="cd.reject()"></button>
+    <button type="button" pButton icon="pi pi-check" label="Sim" (click)="cd.accept()"></button>
+  </p-footer>
+</p-confirmDialog> -->
+
+<div class="card-table">
+
+
+  <p-table #dt [columns]="cols" [value]="products" [paginator]="true" [rows]="5">
+
+    <ng-template pTemplate="caption">
+      <div class="p-d-flex p-ai-center p-jc-between">
+        Listagem de Produtos
+        <span class="p-input-icon-right">
+          <i class="pi pi-search"></i>
+          <input type="text" pInputText size="30" placeholder="Buscar"
+            (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
+        </span>
+        <button pButton pRipple label="Novo Produto" routerLink="../add" icon="pi pi-plus"
+          class=" p-d-inline-block p-mr-2"></button>
+      </div>
+    </ng-template>
+
+    <ng-template pTemplate="header">
+      <tr>
+        <th>ID</th>
+        <th>Código ERP</th>
+        <th>Apresentação</th>
+        <th>Nome Comercial</th>
+        <th>Nome Comercial com Apresentação</th>
+        <th>Unidade Medida Anvisa</th>
+        <th>Código Barras Principal</th>
+        <th>Ações</th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-product>
+      <tr>
+        <td>{{product.id}}</td>
+        <td>{{product.codigoErp}}</td>
+        <td>{{product.apresentacao}}</td>
+        <td>{{product.nomeComercial}}</td>
+        <td>{{product.nomeComercialComApresentacao}}</td>
+        <td>{{product.unidadeMedidaAnvisa}}</td>
+        <td>{{product.codigoBarrasPrincipal}}</td>
+        <td>
+          <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2"
+            (click)="editProduct(product.id)"></button>
+          <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"
+            (click)="deleteProduct(product.id)"></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+</div>
 
 <p-confirmDialog #cd header="Confirmation" icon="pi pi-exclamation-triangle">
   <p-footer>

@@ -15,6 +15,7 @@ import { HttpClient } from '@angular/common/http';
 export class ProductsComponent implements OnInit {
 
   products: Product[];
+  cols: any[];
 
   constructor(
     private productService: ProductService,
@@ -30,6 +31,16 @@ export class ProductsComponent implements OnInit {
       .subscribe(
         response => {
           this.products = response;
+
+          this.cols = [
+            { field: 'id', header: 'ID' },
+            { field: 'codigoErp', header: 'Código ERP' },
+            { field: 'apresentacao', header: 'Apresentação' },
+            { field: 'nomeComercial', header: 'Nome Comercial' },
+            { field: 'nomeComercialComApresentacao', header: 'Nome Comercial com Apresentação' },
+            { field: 'unidadeMedidaAnvisa', header: 'Unidade Medida Anvisa' },
+            { field: 'codigoBarrasPrincipal', header: 'Código Barras Principal' },
+          ];
         },
         error => {
           alert('Erro ao carregar a lista de produtos!');
@@ -53,4 +64,9 @@ export class ProductsComponent implements OnInit {
       }
     });
   }
+
+  editProduct(): void {
+
+  }
+
 }
