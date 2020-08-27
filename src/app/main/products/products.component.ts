@@ -13,6 +13,13 @@ import { HttpClient } from '@angular/common/http';
   providers: [MessageService, ConfirmationService]
 })
 export class ProductsComponent implements OnInit {
+  displayDialog: boolean;
+
+  product: Product = {};
+
+  selectedCar: Product;
+
+  newProduct: boolean;
 
   products: Product[];
   cols: any[];
@@ -67,6 +74,20 @@ export class ProductsComponent implements OnInit {
 
   editProduct(): void {
 
+  }
+
+  cancel(): void {
+
+  }
+
+  save(): void {
+
+  }
+
+  showDialogToAdd(): void {
+    this.newProduct = true;
+    this.product = {};
+    this.displayDialog = true;
   }
 
 }
