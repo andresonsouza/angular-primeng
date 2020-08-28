@@ -1,45 +1,3 @@
-<!-- <p-table [value]="products">
-  <ng-template pTemplate="caption">
-    Lista de Produtos
-</ng-template>
-  <ng-template pTemplate="header">
-    <tr>
-      <th>ID</th>
-      <th>Código ERP</th>
-      <th>Apresentação</th>
-      <th>Nome Comercial</th>
-      <th>Nome Comercial com Apresentação</th>
-      <th>Unidade Medida Anvisa</th>
-      <th>Código Barras Principal</th>
-      <th>Ações</th>
-    </tr>
-  </ng-template>
-  <ng-template pTemplate="body" let-product>
-    <tr>
-      <td>{{product.id}}</td>
-      <td>{{product.codigoErp}}</td>
-      <td>{{product.apresentacao}}</td>
-      <td>{{product.nomeComercial}}</td>
-      <td>{{product.nomeComercialComApresentacao}}</td>
-      <td>{{product.unidadeMedidaAnvisa}}</td>
-      <td>{{product.codigoBarrasPrincipal}}</td>
-      <td>
-        <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="deleteProduct(product.id)"></button>
-        <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteProduct(product.id)"></button>
-      </td>
-    </tr>
-  </ng-template>
-</p-table>
-
-<p-button label="Adicionar" routerLink="../add"></p-button>
-
-<p-confirmDialog #cd header="Confirmation" icon="pi pi-exclamation-triangle">
-  <p-footer>
-    <button type="button" pButton icon="pi pi-times" label="Não" (click)="cd.reject()"></button>
-    <button type="button" pButton icon="pi pi-check" label="Sim" (click)="cd.accept()"></button>
-  </p-footer>
-</p-confirmDialog> -->
-
 <div class="card-table">
 
   <p-table #dt [columns]="cols" [value]="products" [paginator]="true" [rows]="5">
@@ -100,49 +58,51 @@
 
 <p-dialog header="Editar Produto" [(visible)]="displayDialog" [focusOnShow]="false" showEffect="fade" [modal]="true"
   [style]="{width: '600px'}">
-  <div  class="p-fluid p-formgrid p-grid" *ngIf="product">
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()" >
+    <div class="p-fluid p-formgrid p-grid" *ngIf="product">
 
-    <div class="p-field p-col-12 p-md-6">
-      <label for="vin">ID</label>
-      <input pInputText id="id" [(ngModel)]="product.id" autofocus />
+      <div class="p-field p-col-12 p-md-6">
+        <label for="id">ID</label>
+        <input pInputText id="id" formControlName="id" autofocus />
+      </div>
+
+      <div class="p-field p-col-12 p-md-6">
+        <label for="codigoErp">Código ERP</label>
+        <input pInputText id="codigoErp" formControlName="codigoErp" />
+      </div>
+
+      <div class="p-field p-col-12 p-md-6">
+        <label for="apresentacao">Apresentação</label>
+        <input pInputText id="apresentacao" formControlName="apresentacao" />
+      </div>
+
+      <div class="p-field p-col-12 p-md-6">
+        <label for="nomeComercial">Nome Comercial</label>
+        <input pInputText id="nomeComercial" formControlName="nomeComercial" />
+      </div>
+
+      <div class="p-field p-col-12 p-md-6">
+        <label for="nomeComercialComApresentacao">Nome Comercial com Apresentação</label>
+        <input pInputText id="nomeComercialComApresentacao" formControlName="nomeComercialComApresentacao" />
+      </div>
+
+      <div class="p-field p-col-12 p-md-6">
+        <label for="unidadeMedidaAnvisa">Unidade Medida Anvisa</label>
+        <input pInputText id="unidadeMedidaAnvisa" formControlName="unidadeMedidaAnvisa" />
+      </div>
+
+      <div class="p-field p-col-12 p-md-6">
+        <label for="codigoBarrasPrincipal">Código Barras Principal</label>
+        <input pInputText id="codigoBarrasPrincipal" formControlName="codigoBarrasPrincipal" />
+      </div>
+
     </div>
-
-    <div class="p-field p-col-12 p-md-6">
-      <label for="year">Código ERP</label>
-      <input pInputText id="codigoErp"[(ngModel)]="product.codigoErp" />
-    </div>
-
-    <div class="p-field p-col-12 p-md-6">
-      <label for="brand">Apresentação</label>
-      <input pInputText id="apresentacao" [(ngModel)]="product.apresentacao" />
-    </div>
-
-    <div class="p-field p-col-12 p-md-6">
-      <label for="color">Nome Comercial</label>
-      <input pInputText id="nomeComercial" [(ngModel)]="product.nomeComercial" />
-    </div>
-
-    <div class="p-field p-col-12 p-md-6">
-      <label for="color">Nome Comercial com Apresentação</label>
-      <input pInputText id="nomeComercial" [(ngModel)]="product.nomeComercialComApresentacao" />
-    </div>
-
-    <div class="p-field p-col-12 p-md-6">
-      <label for="color">Unidade Medida Anvisa</label>
-      <input pInputText id="nomeComercial" [(ngModel)]="product.unidadeMedidaAnvisa" />
-    </div>
-
-    <div class="p-field p-col-12 p-md-6">
-      <label for="color">Código Barras Principal</label>
-      <input pInputText id="nomeComercial" [(ngModel)]="product.codigoBarrasPrincipal" />
-    </div>
-
-  </div>
+  </form>
 
   <p-footer>
     <div class="ui-dialog-buttonpane ui-helper-clearfix">
       <button type="button" pButton icon="pi pi-times" (click)="cancel()" label="Voltar"></button>
-      <button type="button" pButton icon="pi pi-check" (click)="save()" label="Salvar"></button>
+      <button type="button" pButton icon="pi pi-check" (click)="editProduct()" label="Salvar"></button>
     </div>
   </p-footer>
 </p-dialog>

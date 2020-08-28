@@ -31,12 +31,12 @@ export class ProductService {
     return this.http.delete(`${this.url}/products/` + id);
   }
 
-  updateProduct(prod: Product): Observable<any> {
-    return this.http.patch(`${this.url}/products/`, {...prod})
+  updateProduct(id: Product, params): Observable<any> {
+    return this.http.put(`${this.url}/products/${id}`, params)
       .pipe(
         tap(() => {
           const products = this.productsSubject$.getValue();
-          const i = products.findIndex(p => p.id === prod.id);
+          const i = products.findIndex(p => p.id === id.id);
           if (i >= 0) {
             products.splice(i, 1);
           }

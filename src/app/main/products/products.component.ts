@@ -5,6 +5,8 @@ import { ProductService } from '../../shared/services/product.service';
 import { ConfirmationService } from 'primeng/api';
 import { MessageService } from 'primeng/api';
 import { HttpClient } from '@angular/common/http';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-products',
@@ -15,22 +17,36 @@ import { HttpClient } from '@angular/common/http';
 export class ProductsComponent implements OnInit {
   displayDialog: boolean;
 
+  productForm: FormGroup;
+  id: any;
   product: Product = {};
-
-  selectedCar: Product;
 
   newProduct: boolean;
 
   products: Product[];
   cols: any[];
 
+
+
   constructor(
     private productService: ProductService,
     private http: HttpClient,
-    private confirmationService: ConfirmationService) { }
+    private confirmationService: ConfirmationService,
+    private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.listProducts();
+
+    this.productForm = this.formBuilder.group(
+      {
+        id: [''],
+        codigoErp: [''],
+        apresentacao: [''],
+        nomeComercial: [''],
+        nomeComercialComApresentacao: [''],
+        unidadeMedidaAnvisa: [''],
+        codigoBarrasPrincipal: ['']
+      });
   }
 
   listProducts(): void {
@@ -73,15 +89,26 @@ export class ProductsComponent implements OnInit {
   }
 
   editProduct(): void {
-
+    this.productService.updateProduct(this.id, this.productForm.value)
+    .pipe(first())
+    .subscribe(
+      data => {
+        alert('Produto atualizado com sucesso!');
+      },
+      error => {
+        alert('Erro ao atualizar o produto!');
+      }
+    );
   }
 
   cancel(): void {
-
+    this.displayDialog = false;
   }
 
-  save(): void {
-
+  onSubmit(): void {
+    this.products = [...this.products];
+    this.displayDialog = false;
+    this.product = {};
   }
 
   showDialogToAdd(): void {
